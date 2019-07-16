@@ -8,9 +8,11 @@ import BottomRow from './BottomRow';
 function App() {
 	const [ lionValue, setLion ] = useState(0);
 	const [ tigerValue, setTiger ] = useState(0);
+	const [ quarterValue, setQuarter ] = useState(0);
 
 	console.log('lionValue', lionValue);
 	console.log('tigerValue', tigerValue);
+	console.log(quarterValue);
 
 	//TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
 
@@ -31,7 +33,7 @@ function App() {
 						<div className="away__score">{tigerValue}</div>
 					</div>
 				</div>
-				<BottomRow />
+				<BottomRow quarter={quarterValue} />
 			</section>
 			<section className="buttons">
 				<div className="homeButtons">
@@ -50,6 +52,13 @@ function App() {
 					</button>
 					<button className="awayButtons__fieldGoal" onClick={() => setTiger(tigerValue + 3)}>
 						Away Field Goal
+					</button>
+					<button
+						className="awayButtons__fieldGoal"
+						// used the ternary operator to add the logic for the quarter button.
+						onClick={() => setQuarter(quarterValue >= 4 ? quarterValue - 4 : quarterValue + 1)}
+					>
+						Change Quater
 					</button>
 				</div>
 			</section>
